@@ -1,14 +1,14 @@
-  GraphQLList = require("graphql").GraphQLList
-  GraphQLObjectType = require("graphql").GraphQLObjectType
-  GraphQLSchema = require("graphql").GraphQLSchema
-  GraphQLString = require("graphql").GraphQLString
-  GlobalId = require("graphql-relay").GlobalId
-  globalIdField = require("graphql-relay").globalIdField
-  nodeDefinitions = require("graphql-relay").nodeDefinitions
-  DataLoader = require("dataloader")
-  var express = require('express');
-  var graphqlHTTP = require('express-graphql');
-  var fetch = require('node-fetch');
+var GraphQLList = require("graphql").GraphQLList,
+  GraphQLObjectType = require("graphql").GraphQLObjectType,
+  GraphQLSchema = require("graphql").GraphQLSchema,
+  GraphQLString = require("graphql").GraphQLString,
+  GlobalId = require("graphql-relay").GlobalId,
+  globalIdField = require("graphql-relay").globalIdField,
+  nodeDefinitions = require("graphql-relay").nodeDefinitions,
+  DataLoader = require("dataloader"),
+  express = require('express'),
+  graphqlHTTP = require('express-graphql'),
+  fetch = require('node-fetch');
 
 
   const BASE_URL = 'http://localhost:3001';
@@ -22,7 +22,7 @@
   }
 
   function fetchPersonByURL(relativeURL) {
-    return fetchResponseByURL(relativeURL).then(json => json.person);
+    return fetchResponseByURL(relativeURL).then(json => json);
   }
 
   const personLoader = new DataLoader(

@@ -37,16 +37,18 @@ var person = {
             "first_name":"steven3"
         }
     ]
-}
+};
 
 app.get('/people/:testID/', function (req, res) {
-    console.log(JSON.stringify(person.people[req.params.testID]));
-  res.send(JSON.stringify(person.people[req.params.testID]));
+    var tmp = {};
+    tmp = person.people[req.params.testID - 1];
+    //console.log(JSON.stringify(tmp));
+    res.send(JSON.stringify(tmp));
 });
 
 app.get('/people/', function (req, res) {
-    console.log(JSON.stringify(person));
-  res.send(JSON.stringify(person));
+    //console.log(JSON.stringify(person));
+    res.send(JSON.stringify(person));
 });
 
 app.listen(3001, function () {
