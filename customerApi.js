@@ -3,7 +3,7 @@ var app = express();
 
 var person = {
   "data": {
-    "email_sender_address": [
+    "email_sender_addresses": [
       "email1",
       "email2"
     ]

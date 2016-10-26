@@ -10,10 +10,6 @@ var GraphQLList = require("graphql").GraphQLList,
 
 const BASE_URL = 'http://localhost:8080';
 
-var test = [
-  "CI3E8101A8431C450C9DC461399F2165"
-]
-
 function fetchCustomerByURL(relativeURL) {
   return fetchResponseByURL(relativeURL).then(json => json.data);
 }
