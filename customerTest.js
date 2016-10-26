@@ -2,6 +2,7 @@ var GraphQLList = require("graphql").GraphQLList,
   GraphQLObjectType = require("graphql").GraphQLObjectType,
   GraphQLSchema = require("graphql").GraphQLSchema,
   GraphQLString = require("graphql").GraphQLString,
+  GraphQLID = require("graphql").GraphQLID,
   DataLoader = require("dataloader"),
   express = require('express'),
   graphqlHTTP = require('express-graphql'),
@@ -26,9 +27,11 @@ const CustomerType = new GraphQLObjectType({
   name: 'Customer',
   description: 'Somebody that you used to know',
   fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
     email_sender_address: {
       type: new GraphQLList(GraphQLString),
-      resolve: customer => customer.email_sender_addresses,
+      resolve: customer => fetchCustomerByURL(`/customer/${customer.id}/sender-addresses`)
     }
   })
 });
@@ -42,7 +45,7 @@ var querySchema = new GraphQLObjectType({
       args: {
         id: {type: GraphQLString}
       },
-      resolve: (root, args) => customerLoader.load(`/customer/${args.id}/sender-addresses`)
+      resolve: (root, args) => customerLoader.load(`/customer/${args.id}`)
     }
   })
 });
